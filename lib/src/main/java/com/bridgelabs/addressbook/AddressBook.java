@@ -70,6 +70,30 @@ public class AddressBook {
 			e.printStackTrace();
 		}
 	}
+	public void getContactsByCityOrState(String city, String state) {
+		try (java.sql.Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+				java.sql.PreparedStatement stmt = conn
+						.prepareStatement("select * from address_book where city = ? or state = ? ");) {
+			stmt.setString(1, city);
+			stmt.setString(2, state);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				System.out.print("FirstName" + rs.getString(1) + "  ");
+				System.out.print("LastName: " + rs.getString(2) + "  ");
+				System.out.print("Address: " + rs.getString(3) + "  ");
+				System.out.print("City: " + rs.getString(4) + "  ");
+				System.out.print("State: " + rs.getString(5) + "  ");
+				System.out.print("Zip: " + rs.getInt(6) + "  ");
+				System.out.print("PhoneNumbers: " + rs.getInt(7) + "  ");
+				System.out.print("Email: " + rs.getString(8) + "  ");
+				System.out.println("Type: " + rs.getString(9) + "  ");
+			}
+		rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	
 }

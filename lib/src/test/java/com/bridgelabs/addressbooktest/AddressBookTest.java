@@ -20,11 +20,17 @@ public class AddressBookTest {
 		AddressBook book = new AddressBook();
 		book.updateRecord("India", "tiaa");
 	}
+
 	@Test
-	public void retrieveDataFromSpecificPeriod() throws SQLException
-	{
-		AddressBook book= new AddressBook();
+	public void retrieveDataFromSpecificPeriod() throws SQLException {
+		AddressBook book = new AddressBook();
 		book.getdataByDate("2018-09-01");
-		
+
+	}
+
+	@Test
+	public void retrieveDataForStateOrCity() throws SQLException {
+		AddressBook book = new AddressBook();
+		book.getContactsByCityOrState("dombivali", "Mumbai");
 	}
 }
