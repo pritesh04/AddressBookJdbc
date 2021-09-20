@@ -8,14 +8,16 @@ import com.bridgelabs.addressbook.AddressBook;
 
 public class AddressBookTest {
 
-	
 	@Test
-	public void retrieveDataFromDB_ShouldReturnData()
-	{
-		AddressBook book= new AddressBook();
+	public void retrieveDataFromDB_ShouldReturnData() {
+		AddressBook book = new AddressBook();
 		book.getDataFromDB();
-		
-	}
+
 	}
 
-
+	@Test
+	public void updateRecord_ShouldGiveUpdatedRecords() {
+		AddressBook book = new AddressBook();
+		book.updateRecord("India", "tiaa");
+	}
+}

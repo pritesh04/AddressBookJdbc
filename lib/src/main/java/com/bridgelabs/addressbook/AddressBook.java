@@ -32,6 +32,18 @@ public class AddressBook {
 			e.printStackTrace();
 		}
 	}
+	public void updateRecord(String city, String name) {
+		try (java.sql.Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+			String query = ("update address_book set city=?  where firstName=?");
+			java.sql.PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, city);
+			ps.setString(2, name);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	
 }
