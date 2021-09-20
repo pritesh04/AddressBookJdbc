@@ -11,7 +11,7 @@ import com.mysql.jdbc.Statement;
 public class AddressBook {
 	static final String DB_URL = "jdbc:mysql://localhost/address_bookservice";
 	static final String USER = "root";
-	static final String PASS = "Pjb#4698";
+	static final String PASS = "root";
 
 	public void getDataFromDB() {
 		try (java.sql.Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
