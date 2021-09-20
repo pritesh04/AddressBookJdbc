@@ -33,4 +33,13 @@ public class AddressBookTest {
 		AddressBook book = new AddressBook();
 		book.getContactsByCityOrState("dombivali", "Mumbai");
 	}
+
+	
+	@Test
+	public void insertDataIntoDB()
+	{
+		AddressBook book= new AddressBook();
+		book.insertIntoDB("Prit", "Bhang", "Hyd", "Kalwa", "Maha", 421202, 8982288, "Äbc@gmail.com", "Friends");
+	}
+
 }

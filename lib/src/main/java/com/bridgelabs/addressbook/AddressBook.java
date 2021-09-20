@@ -95,5 +95,37 @@ public class AddressBook {
 
 	}
 
+
+
+
+	public void insertIntoDB(String firstName, String lastName, String address, String city, String state, int zipcode,
+			int phoneNumber, String email, String type) {
+		try (java.sql.Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+				java.sql.PreparedStatement stmt = conn
+						.prepareStatement("insert into address_book values (?,?,?,?,?,?,?,?,?) ");) {
+			stmt.setString(1, firstName);
+			stmt.setString(2, lastName);
+			stmt.setString(3, address);
+			stmt.setString(4, city);
+			stmt.setString(5, state);
+			stmt.setInt(6, zipcode);
+			stmt.setInt(7, phoneNumber);
+			stmt.setString(8, email);
+			stmt.setString(9, type);
+			// stmt.setString(10, startDate);
+			stmt.executeUpdate();
+			int status = stmt.executeUpdate();
+			if (status > 0) {
+				System.out.println("Record  inserted");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+
+
+
 	
 }
