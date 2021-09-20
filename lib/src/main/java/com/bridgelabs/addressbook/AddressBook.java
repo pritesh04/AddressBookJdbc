@@ -44,6 +44,32 @@ public class AddressBook {
 			e.printStackTrace();
 		}
 	}
+	
+	public void getdataByDate(String date) throws SQLException {
+		try (java.sql.Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+				java.sql.PreparedStatement stmt = conn.prepareStatement(
+						"select phoneNumber from address_book where startdate between CAST(? AS DATE) AND DATE(NOW()) ")) {
+			stmt.setString(1, date);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				System.out.print("FirstName" + rs.getString(1) + "  ");
+				System.out.print("LastName: " + rs.getString(2) + "  ");
+				System.out.print("Address: " + rs.getString(3) + "  ");
+				System.out.print("City: " + rs.getString(4) + "  ");
+				System.out.print("State: " + rs.getString(5) + "  ");
+				System.out.print("Zip: " + rs.getInt(6) + "  ");
+				System.out.print("PhoneNumbers: " + rs.getInt(7) + "  ");
+				System.out.print("Email: " + rs.getString(8) + "  ");
+				System.out.println("Type: " + rs.getString(9) + "  ");
+
+			}
+			rs.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	
 }
